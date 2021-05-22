@@ -28,7 +28,7 @@ const sounds = {
 };
 
 for (let couleur of couleurs) {
-	couleur.ontouchend = (e) => {
+	couleur.ontouchstart = (e) => {
 		e.preventDefault();
 		sounds[couleur.classList[1]].play();
 		let copy = couleur.cloneNode(true);
