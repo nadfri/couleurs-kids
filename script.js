@@ -28,7 +28,19 @@ const sounds = {
 };
 
 for (let couleur of couleurs) {
-	couleur.onclick = () => {
+	couleur.ontouchstart = (e) => {
+		e.preventDefault();
+		sounds[couleur.classList[1]].play();
+		let copy = couleur.cloneNode(true);
+		copy.id = 'copyID';
+		copy.classList.add('zoomOut');
+		overlay.appendChild(copy);
+		overlay.style.display = 'flex';
+		setTimeout(() => overlay.classList.add('blur'), 100);
+	};
+
+	couleur.onclick = (e) => {
+		e.preventDefault();
 		sounds[couleur.classList[1]].play();
 		let copy = couleur.cloneNode(true);
 		copy.id = 'copyID';
@@ -39,7 +51,20 @@ for (let couleur of couleurs) {
 	};
 }
 
-overlay.onclick = () => {
+overlay.ontouchstart = (e) => {
+	e.preventDefault();
+	copyID.classList.replace('zoomOut', 'zoomIn');
+	overlay.classList.remove('blur');
+
+	setTimeout(() => {
+		//copyID.classList.remove('zoomIn');
+		overlay.innerHTML = '';
+		overlay.style.display = 'none';
+	}, 500);
+};
+
+overlay.onclick = (e) => {
+	e.preventDefault();
 	copyID.classList.replace('zoomOut', 'zoomIn');
 	overlay.classList.remove('blur');
 
