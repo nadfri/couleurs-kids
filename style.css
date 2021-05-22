@@ -93,6 +93,7 @@ body {
 
 .noir {
 	background-color: black;
+    border: solid white 4px;
 }
 
 .gris {
