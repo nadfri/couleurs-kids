@@ -191,17 +191,16 @@ h1{
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: all 1s;
-    border-top-left-radius: 40px;
-    border-top-right-radius: 40px;
     font-style: italic;
-    font-family: 'Permanent Marker';
-    padding: 10px;
-    transform: translateY(100%);
+    font-family: 'Permanent Marker', cursive;
+    padding: 5px;
+    font-size: 1.3rem;
     cursor: pointer;
+    transform: translateX(100%);
+    transition: all 1s;
     z-index: 2;
 }
 
 .slide {
-    transform: translateY(0%);
+    transform: translateX(0%);
 }
