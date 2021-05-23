@@ -12,6 +12,7 @@ body {
 	background-color: #6495ed;
 	-webkit-tap-highlight-color: rgba(107, 107, 107, 0);
 	-webkit-tap-highlight-color: transparent;
+    overflow: hidden;
 }
 
 .start{
@@ -178,4 +179,29 @@ h1{
 		transform: translate3d(0,0,0)
 
 	}
+}
+
+/************** Install PWA Button********/
+.installBtn {
+    position: absolute;
+    bottom:0;
+    left: 0;
+    width: 100%;
+    background-color: #11698e;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 1s;
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
+    font-style: italic;
+    font-family: 'Permanent Marker';
+    padding: 10px;
+    transform: translateY(100%);
+    cursor: pointer;
+    z-index: 2;
+}
+
+.slide {
+    transform: translateY(0%);
 }
