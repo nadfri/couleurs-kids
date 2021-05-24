@@ -1,3 +1,5 @@
+"use strict";
+
 const couleurs = document.querySelectorAll('.couleur');
 const rouge    = new Audio('sounds/rouge.m4a');
 const rose     = new Audio('sounds/rose.m4a');
@@ -19,6 +21,7 @@ const sounds = {
 	blanc,gris,noir,
 };
 
+
 //Definit si on est sur mobile ou non, si oui active le touch event et non le click de souris
 const handleClick = (typeof window.orientation !== "undefined" || navigator.userAgent.indexOf('IEMobile') !== -1 )? "touchstart" : "click";
 
@@ -34,15 +37,20 @@ for (let couleur of couleurs)
 	couleur.addEventListener(handleClick, (e)=>
     {
 		e.preventDefault(); //désactive le onclick avec le touch event
-		sounds[couleur.classList[1]].play();
+        const clone = document.querySelector(".zoomOut");
 
-		const copy = couleur.cloneNode(true);
-		copy.id  = 'copyID';
-		copy.classList.add('zoomOut');
+        if(!clone) //empeche l'apparation de plusieurs clones
+        {
+            sounds[couleur.classList[1]].play();
 
-		overlay.appendChild(copy);
-		overlay.style.display = 'flex';
-		setTimeout(() => overlay.classList.add('blur'), 100);
+            const copy = couleur.cloneNode(true);
+
+            copy.classList.add('zoomOut');
+
+            overlay.appendChild(copy);
+            overlay.style.display = 'flex';
+            setTimeout(() => overlay.classList.add('blur'), 100);
+        }
 
 	},false);
 }
@@ -50,15 +58,19 @@ for (let couleur of couleurs)
 overlay.addEventListener(handleClick, (e)=>
 {
 	e.preventDefault(); //désactive le onclick avec le touch event
+    const clone = document.querySelector(".zoomOut");
 
-	copyID.classList.replace('zoomOut', 'zoomIn');
-	overlay.classList.remove('blur');
+    if(clone) //empeche l'action si pas de clone
+	{
+        clone.classList.replace('zoomOut', 'zoomIn');
+        overlay.classList.remove('blur');
 
-	setTimeout(() => 
-    {
-		overlay.innerHTML = '';
-		overlay.style.display = 'none';
-	}, 500);
+        setTimeout(() => 
+        {
+            overlay.innerHTML = '';
+            overlay.style.display = 'none';
+        }, 500);
+}
 
 },false);
 
@@ -67,7 +79,7 @@ overlay.addEventListener(handleClick, (e)=>
 window.onbeforeinstallprompt = (event) => {
     event.preventDefault(); // annuler la banniere par defaut
     installBtn.classList.add("slide"); //affiche la banniere perso
-    setTimeout(() => installBtn.classList.remove("slide"), 7000);
+    setTimeout(() => installBtn.style.remove("slide"), 7000);
     
     installBtn.onclick = () => {
         console.log("hey")

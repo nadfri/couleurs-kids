@@ -188,13 +188,14 @@ h1{
     left: 0;
     width: 100%;
     background-color: #11698e;
+    border-radius: 5px;
     display: flex;
     justify-content: center;
     align-items: center;
     font-style: italic;
     font-family: 'Permanent Marker', cursive;
     padding: 5px;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     cursor: pointer;
     transform: translateX(100%);
     transition: all 1s;
