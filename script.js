@@ -79,7 +79,7 @@ overlay.addEventListener(handleClick, (e)=>
 window.onbeforeinstallprompt = (event) => {
     event.preventDefault(); // annuler la banniere par defaut
     installBtn.classList.add("slide"); //affiche la banniere perso
-    setTimeout(() => installBtn.style.remove("slide"), 7000);
+    setTimeout(() => installBtn.classList.remove("slide"), 7000);
     
     installBtn.onclick = () => {
         console.log("hey")
